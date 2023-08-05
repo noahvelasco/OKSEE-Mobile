@@ -1,0 +1,13 @@
+* "#171717" - Background and Border Colors
+
+"#ffffff" - Text Color
+
+"#C0A080" or "#9C715F" - Accent Color (used to highlight important elements and calls to action)
+
+*Slightly darker than the background (e.g., "#0F0F0F" for "#171717") - Border Color
+
+*Accent color or white (#ffffff) for subtle icon representations
+
+*Accent color (e.g., "#C0A080" or "#9C715F") - Primary Action Button Color
+
+*Lighter shade of the accent color or different shade of primary color (e.g., "#E9D0B0" for "#C0A080") - Secondary Action Button Color
