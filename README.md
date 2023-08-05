@@ -41,41 +41,9 @@ TBA
 
 ---
 ### How to use
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Run in App.js directory:
 
-1. Open 2 terminals A and B.
-
-2. Start the Metro Server on Terminal A
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-3. Start your Application on Terminal B
-
-#### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-#### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
+`npx expo start`
 
 
 ---
@@ -88,9 +56,6 @@ yarn ios
 --- 
 
 ### Possible Issues
-
-* EXPO was NOT used
-* AOS/iOS mobile version
 
 ---
 ### Sources
