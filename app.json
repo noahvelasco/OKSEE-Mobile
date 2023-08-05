@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#171717"
-      }
+      },
+      "package": "com.anonymous.oksee"
     },
     "web": {
       "favicon": "./assets/icon.png"
