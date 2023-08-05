@@ -1,8 +1,6 @@
 <p align="center">
-<img src="./assets/images/splash.png" alt="Alternative text" title="App Splash Logo" height="250"/>
+<img src="./assets/images/logo_land.png" alt="Alternative text" title="App Splash Logo" height="250"/>
 </p>
-
-# OKSee 
 
 OKSee is a modern and simple cross platform mobile app showcasing the best parts of Oklahoma City, Oklahoma. The main staple of this mobile app is the modern, sleek, and simple UI/UX. All images, color-schemes, and software engineering was done and maintained by Noah Velasco. This repository will be supported until further notice.
 
@@ -28,7 +26,7 @@ TBA
 ---
 ### Features / Todo's
 - [x] Branding
-- [ ] Splash Screen
+- [x] Splash Screen
 - [ ] Landing Screen <=> Map Screen
 - [ ] Weather Forecast Overlay
 - [ ] Light/Dark mode
