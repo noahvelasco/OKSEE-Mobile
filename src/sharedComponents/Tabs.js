@@ -5,12 +5,12 @@ import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
-import Home from "../homeScreen/Home";
-import Locations from "../locationsScreen/Locations";
+import Home from "../screens/homeScreen/Home";
+import Locations from "../screens/locationsScreen/Locations";
 
 const Tab = createBottomTabNavigator();
 
-function Tabs() {
+function Tabs({ weather }) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -19,6 +19,7 @@ function Tabs() {
         tabBarStyle: {
           backgroundColor: "#171717",
         },
+        headerShown: false, // Add this line to hide the header
         headerStyle: {
           backgroundColor: "#171717",
         },
@@ -31,8 +32,8 @@ function Tabs() {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
         options={{
+          tabBarLabel: "", // Add this line to remove the tab bar text
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="map-outline"
@@ -41,12 +42,14 @@ function Tabs() {
             />
           ),
         }}
-      />
+      >
+        {() => <Home weather={weather} />}
+      </Tab.Screen>
 
       <Tab.Screen
         name="Locations"
-        component={Locations}
         options={{
+          tabBarLabel: "", // Add this line to remove the tab bar text
           tabBarIcon: ({ focused }) => (
             <Feather
               name="list"
@@ -55,10 +58,11 @@ function Tabs() {
             />
           ),
         }}
-      />
+      >
+        {() => <Locations />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({});
 export default Tabs;
