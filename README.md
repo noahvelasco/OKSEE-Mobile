@@ -28,7 +28,7 @@ TBA
 - [x] Branding
 - [x] Splash Screen
 - [ ] Landing Screen <=> Map Screen
-- [ ] Weather Forecast Overlay
+- [x] Weather Forecast Overlay
 - [ ] Light/Dark mode
 - [ ] Eateries Overlay Chip + Pins
 - [ ] Cafés Overlay Chip + Pins
