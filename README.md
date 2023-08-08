@@ -6,8 +6,9 @@ OKSee is a modern and simple cross platform mobile app showcasing the best parts
 
 <h3 align="center">Technologies Used</h3>
 <p align="center">
-<a href="https://reactnative.dev/docs/getting-started?guide=android" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="react"  height="40"/></a><a href="https://nodejs.org/en" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-horizontal.svg" alt="nodejs"  height="40"/></a><a href="https://www.npmjs.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/npmjs/npmjs-ar21.svg" alt="npm"  height="40"/></a>
-<a href="https://www.android.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/android/android-icon.svg" alt="android"  height="40"/></a>
+<a href="https://reactnative.dev/docs/getting-started?guide=android" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="react"  height="40"/></a><a href="https://www.google.com/maps" target="_blank" rel="noreferrer"> 
+<img src="https://www.vectorlogo.zone/logos/google_maps/google_maps-icon.svg" alt="googlemaps"  height="40"/></a> <a href="https://openweathermap.org/api" target="_blank" rel="noreferrer"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="openweather"  height="40"/></a><a href="https://www.android.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/android/android-icon.svg" alt="android"  height="40"/></a><a href="https://www.apple.com/iphone/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/apple/apple-tile.svg" alt="ios"  height="40"/></a>
+
 </p>
 
 ---

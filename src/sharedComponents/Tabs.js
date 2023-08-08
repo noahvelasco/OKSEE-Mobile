@@ -33,7 +33,7 @@ function Tabs({ weather }) {
       <Tab.Screen
         name="Home"
         options={{
-          tabBarLabel: "", // Add this line to remove the tab bar text
+          // tabBarLabel: "", // Add this line to remove the tab bar text
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="map-outline"
@@ -49,7 +49,7 @@ function Tabs({ weather }) {
       <Tab.Screen
         name="Locations"
         options={{
-          tabBarLabel: "", // Add this line to remove the tab bar text
+          // tabBarLabel: "", // Add this line to remove the tab bar text
           tabBarIcon: ({ focused }) => (
             <Feather
               name="list"

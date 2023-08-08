@@ -14,8 +14,8 @@ const Home = ({ weather }) => {
         initialRegion={{
           latitude: 35.4676,
           longitude: -97.5164,
-          latitudeDelta: 0.1, // Controls the zoom level (latitude span)
-          longitudeDelta: 0.1, // Controls the zoom level (longitude span)
+          latitudeDelta: 0.6, // Controls the zoom level (latitude span)
+          longitudeDelta: 0.6, // Controls the zoom level (longitude span)
         }}
       />
       <View style={styles.weather}>
