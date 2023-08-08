@@ -1,10 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StatusBar, View, StyleSheet } from "react-native";
+import MapView from "react-native-maps";
+
 import Weather from "./components/Weather";
 
 const Home = ({ weather }) => {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="#171717" barStyle="light-content" />
+
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 35.4676,
+          longitude: -97.5164,
+          latitudeDelta: 0.1, // Controls the zoom level (latitude span)
+          longitudeDelta: 0.1, // Controls the zoom level (longitude span)
+        }}
+      />
       <View style={styles.weather}>
         <Weather allWeather={weather} />
       </View>
@@ -14,14 +27,18 @@ const Home = ({ weather }) => {
 
 const styles = StyleSheet.create({
   container: {
+    ...StyleSheet.absoluteFillObject,
     flex: 1,
-    backgroundColor: "grey",
   },
   weather: {
-    flex: 1,
-    margin: 25,
+    position: "absolute", // Position the Weather component absolutely
+    marginTop: 50,
     justifyContent: "flex-start",
-    alignItems: "center",
+    alignSelf: "center",
+    zIndex: 1, // Ensure the Weather component appears above the map
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 

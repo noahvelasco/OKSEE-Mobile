@@ -27,7 +27,7 @@ TBA
 ### Features / Todo's
 - [x] Branding
 - [x] Splash Screen
-- [ ] Landing Screen <=> Map Screen
+- [x] Landing Screen <=> Map Screen
 - [x] Weather Forecast Overlay
 - [ ] Light/Dark mode
 - [ ] Eateries Overlay Chip + Pins
