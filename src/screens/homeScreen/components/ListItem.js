@@ -10,7 +10,7 @@ const ListItem = (props) => {
 
   return (
     <View style={item}>
-      <Text style={date}>{moment(dt_txt).fromNow()}</Text>
+      <Text style={date}>{moment(dt_txt).calendar()}</Text>
 
       <View style={styles.weatherStatus}>
         <Feather
