@@ -18,6 +18,9 @@ import locations from "../../utils/locations";
 
 const Home = ({ weather }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [pressedPizza, setPizza] = useState(false);
+  const [pressedBurger, setBurger] = useState(false);
+  const [pressedCoffee, setCoffee] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -37,7 +40,14 @@ const Home = ({ weather }) => {
       </View>
 
       <View style={styles.eateries}>
-        <Eateries />
+        <Eateries
+          pressedPizza={pressedPizza}
+          setPizza={setPizza}
+          pressedBurger={pressedBurger}
+          setBurger={setBurger}
+          pressedCoffee={pressedCoffee}
+          setCoffee={setCoffee}
+        />
       </View>
 
       <MapView

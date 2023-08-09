@@ -4,18 +4,22 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
-const Eateries = () => {
-  const [pressedPizza, setPizza] = useState(false);
-  const [pressedBurger, setBurger] = useState(false);
-  const [pressedCoffee, setCoffee] = useState(false);
-  const onPressPizza = () => setPizza((prevState) => !prevState);
-  const onPressBurger = () => setBurger((prevState) => !prevState);
-  const onPressCoffee = () => setCoffee((prevState) => !prevState);
-
+const Eateries = ({
+  pressedPizza,
+  setPizza,
+  pressedBurger,
+  setBurger,
+  pressedCoffee,
+  setCoffee,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.pizzaButton}>
-        <TouchableOpacity onPress={onPressPizza}>
+        <TouchableOpacity
+          onPress={() => {
+            setPizza((prevState) => !prevState);
+          }}
+        >
           <Ionicons
             name="pizza-outline"
             size={30}
@@ -25,7 +29,11 @@ const Eateries = () => {
       </View>
 
       <View style={styles.burgerButton}>
-        <TouchableOpacity onPress={onPressBurger}>
+        <TouchableOpacity
+          onPress={() => {
+            setBurger((prevState) => !prevState);
+          }}
+        >
           <FontAwesome5
             name="hamburger"
             size={30}
@@ -35,7 +43,11 @@ const Eateries = () => {
       </View>
 
       <View style={styles.coffeeButton}>
-        <TouchableOpacity onPress={onPressCoffee}>
+        <TouchableOpacity
+          onPress={() => {
+            setCoffee((prevState) => !prevState);
+          }}
+        >
           <Feather
             name="coffee"
             size={30}
