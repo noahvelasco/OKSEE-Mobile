@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { weatherType } from "../../../utils/weatherType";
 
-const Weather = ({ allWeather }) => {
+const WeatherOverlay = ({ allWeather }) => {
   const currWeather = allWeather.list[0];
   const {
     main: { temp },
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   temp: { color: "white" },
 });
 
-export default Weather;
+export default WeatherOverlay;

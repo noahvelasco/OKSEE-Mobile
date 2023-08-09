@@ -1,13 +1,44 @@
-import React from "react";
-import { StatusBar, View, StyleSheet } from "react-native";
-import MapView from "react-native-maps";
+import React, { useState } from "react";
+import {
+  Text,
+  View,
+  Pressable,
+  Alert,
+  Modal,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
-import Weather from "./components/Weather";
+import WeatherOverlay from "./components/WeatherOverlay";
+import Eateries from "./components/Eateries";
+import WeatherModal from "./components/WeatherModal";
+import locations from "../../utils/locations";
 
 const Home = ({ weather }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#171717" barStyle="light-content" />
+
+      {/* This is the weather component at the top - when clicked the full weather comes up */}
+      <View style={styles.weather}>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <WeatherOverlay allWeather={weather} />
+        </TouchableOpacity>
+        <WeatherModal
+          city={weather.city.name}
+          weather={weather.list}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+      </View>
+
+      <View style={styles.eateries}>
+        <Eateries />
+      </View>
 
       <MapView
         style={styles.map}
@@ -18,9 +49,6 @@ const Home = ({ weather }) => {
           longitudeDelta: 0.6, // Controls the zoom level (longitude span)
         }}
       />
-      <View style={styles.weather}>
-        <Weather allWeather={weather} />
-      </View>
     </View>
   );
 };
@@ -30,15 +58,22 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     flex: 1,
   },
-  weather: {
-    position: "absolute", // Position the Weather component absolutely
-    marginTop: 50,
-    justifyContent: "flex-start",
-    alignSelf: "center",
-    zIndex: 1, // Ensure the Weather component appears above the map
-  },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+
+  weather: {
+    position: "absolute",
+    top: 50,
+    alignSelf: "center",
+    zIndex: 1,
+  },
+  eateries: {
+    position: "absolute",
+    right: 10,
+    bottom: 10,
+    alignSelf: "flex-end",
+    zIndex: 1,
   },
 });
 
