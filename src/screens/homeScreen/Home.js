@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import { View, StatusBar, StyleSheet, TouchableOpacity } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 import WeatherOverlay from "./components/WeatherOverlay";
 import Eateries from "./components/Eateries";
 import WeatherModal from "./components/WeatherModal";
 import { locations } from "../../utils/locations";
+import mapStyle from "../../utils/mapStyle.json";
 
 const Home = ({ weather }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pressedPizza, setPizza] = useState(false);
   const [pressedBurger, setBurger] = useState(false);
   const [pressedCoffee, setCoffee] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(0.6);
+
+  //custom map style
+  const styleMap = mapStyle;
 
   const showMarkers = () => {
+    console.log("show markers>>>");
     //map the locations at render/rerender
     return locations.map((item, index) => {
       //if pizza button pressed then show its markers
@@ -82,13 +88,15 @@ const Home = ({ weather }) => {
       </View>
 
       <MapView
+        provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
           latitude: 35.4676,
           longitude: -97.5164,
-          latitudeDelta: 0.6, // Controls the zoom level (latitude span)
-          longitudeDelta: 0.6, // Controls the zoom level (longitude span)
+          latitudeDelta: zoomLevel, // Controls the zoom level (latitude span)
+          longitudeDelta: zoomLevel, // Controls the zoom level (longitude span)
         }}
+        customMapStyle={styleMap}
       >
         {showMarkers()}
       </MapView>
