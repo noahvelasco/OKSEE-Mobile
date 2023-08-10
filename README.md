@@ -21,7 +21,7 @@ TBA
 </p> -->
 
 ---
-### Live Demo 
+### Live Demo
 TBA
 
 ---
@@ -30,13 +30,14 @@ TBA
 - [x] Splash Screen
 - [x] Landing Screen <=> Map Screen
 - [x] Weather Forecast Overlay
-- [ ] Light/Dark mode
-- [ ] Eateries Overlay Chip + Pins
-- [ ] Cafés Overlay Chip + Pins
-- [ ] Rooftop-Bars Overlay Chip + Pins
-- [ ] Parks Overlay Chip + Pins
-- [ ] Bottom Nav Bar (info-map-locations)
-- [ ] QA
+- [x] Locations Overlay Chip + Pins
+- [x] Bottom Nav Bar (info-map-locations)
+- [ ] Custom Google Map
+- [ ] Animated Expanding Locations Button
+- [ ] Sqlite DB for location date
+- [ ] Location list
+- [ ] Location list search bar
+- [ ] QA (Android + iOS)
 - [ ] Publish to App Store
 
 
@@ -61,4 +62,4 @@ Run in App.js directory:
 ---
 ### Sources
 
-
+- [Google Maps Markers + Map Customization](https://youtu.be/xcn-0LyX6JY)
