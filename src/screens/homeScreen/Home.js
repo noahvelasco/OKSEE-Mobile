@@ -1,26 +1,57 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  Pressable,
-  Alert,
-  Modal,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, StatusBar, StyleSheet, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
 import WeatherOverlay from "./components/WeatherOverlay";
 import Eateries from "./components/Eateries";
 import WeatherModal from "./components/WeatherModal";
-import locations from "../../utils/locations";
+import { locations } from "../../utils/locations";
 
 const Home = ({ weather }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pressedPizza, setPizza] = useState(false);
   const [pressedBurger, setBurger] = useState(false);
   const [pressedCoffee, setCoffee] = useState(false);
+
+  const showMarkers = () => {
+    //map the locations at render/rerender
+    return locations.map((item, index) => {
+      //if pizza button pressed then show its markers
+      if (pressedPizza && item.category == "pizza") {
+        return (
+          <Marker
+            key={index}
+            coordinate={item.coordinate}
+            title={item.title}
+            pinColor={item.pinColor}
+            description={item.description}
+          />
+        );
+      }
+      if (pressedBurger && item.category == "burger") {
+        return (
+          <Marker
+            key={index}
+            coordinate={item.coordinate}
+            title={item.title}
+            pinColor={item.pinColor}
+            description={item.description}
+          />
+        );
+      }
+      if (pressedCoffee && item.category == "coffee") {
+        return (
+          <Marker
+            key={index}
+            coordinate={item.coordinate}
+            title={item.title}
+            pinColor={item.pinColor}
+            description={item.description}
+          />
+        );
+      }
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -58,7 +89,9 @@ const Home = ({ weather }) => {
           latitudeDelta: 0.6, // Controls the zoom level (latitude span)
           longitudeDelta: 0.6, // Controls the zoom level (longitude span)
         }}
-      />
+      >
+        {showMarkers()}
+      </MapView>
     </View>
   );
 };
