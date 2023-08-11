@@ -13,13 +13,12 @@ const Home = ({ weather }) => {
   const [pressedPizza, setPizza] = useState(false);
   const [pressedBurger, setBurger] = useState(false);
   const [pressedCoffee, setCoffee] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(0.6);
+  const [zoomLevel, setZoomLevel] = useState(0.4);
 
   //custom map style
   const styleMap = mapStyle;
 
   const showMarkers = () => {
-    console.log("show markers>>>");
     //map the locations at render/rerender
     return locations.map((item, index) => {
       //if pizza button pressed then show its markers
@@ -29,7 +28,7 @@ const Home = ({ weather }) => {
             key={index}
             coordinate={item.coordinate}
             title={item.title}
-            pinColor={item.pinColor}
+            pinColor={"#000080"}
             description={item.description}
           />
         );
@@ -40,7 +39,7 @@ const Home = ({ weather }) => {
             key={index}
             coordinate={item.coordinate}
             title={item.title}
-            pinColor={item.pinColor}
+            pinColor={`#FFDB58`}
             description={item.description}
           />
         );
@@ -51,7 +50,7 @@ const Home = ({ weather }) => {
             key={index}
             coordinate={item.coordinate}
             title={item.title}
-            pinColor={item.pinColor}
+            pinColor={"#D2691E"}
             description={item.description}
           />
         );
