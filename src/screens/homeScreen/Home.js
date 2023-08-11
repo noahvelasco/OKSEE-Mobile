@@ -13,7 +13,7 @@ const Home = ({ weather }) => {
   const [pressedPizza, setPizza] = useState(false);
   const [pressedBurger, setBurger] = useState(false);
   const [pressedCoffee, setCoffee] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(0.4);
+  const [zoomLevel, setZoomLevel] = useState(0.25);
 
   //custom map style
   const styleMap = mapStyle;
@@ -87,6 +87,7 @@ const Home = ({ weather }) => {
       </View>
 
       <MapView
+        showsUserLocation={true}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
@@ -120,8 +121,8 @@ const styles = StyleSheet.create({
   },
   eateries: {
     position: "absolute",
-    right: 10,
-    bottom: 10,
+    right: 12,
+    bottom: 45,
     alignSelf: "flex-end",
     zIndex: 1,
   },
