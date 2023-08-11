@@ -32,8 +32,8 @@ TBA
 - [x] Weather Forecast Overlay
 - [x] Locations Overlay Chip + Pins
 - [x] Bottom Nav Bar (info-map-locations)
-- [ ] Custom Google Map
-- [ ] Animated Expanding Locations Button
+- [x] Custom Google Map
+- [x] Animated Expanding Locations Button
 - [ ] Sqlite DB for location date
 - [ ] Location list
 - [ ] Location list search bar
@@ -63,3 +63,8 @@ Run in App.js directory:
 ### Sources
 
 - [Google Maps Markers + Map Customization](https://youtu.be/xcn-0LyX6JY)
+
+
+### Technical Debt
+- Location Permissions on iOS
+- Google Maps Dependencies/Requirements on iOS
