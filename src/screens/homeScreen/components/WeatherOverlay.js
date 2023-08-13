@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
+    borderColor: "rgba(192, 160, 128, 0.5)",
+    borderWidth: 2,
   },
   forecast: {
     color: "white",

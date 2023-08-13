@@ -77,6 +77,8 @@ const styles = StyleSheet.create({
     width: "80%", // Define the desired width
     height: "65%", // Define the desired height
     backgroundColor: "#171717",
+    borderColor: "rgba(192, 160, 128, 0.5)",
+    borderWidth: 2,
     borderRadius: 20,
     position: "relative",
     justifyContent: "center", // Center content vertically
