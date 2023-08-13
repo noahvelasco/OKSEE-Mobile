@@ -51,7 +51,7 @@ const Eateries = ({
         {expanded && (
           <Animated.View
             style={{
-              marginTop: 10,
+              marginTop: 5,
               transform: [{ translateY: slideAnimation }],
             }}
           >
@@ -64,7 +64,7 @@ const Eateries = ({
               <Ionicons
                 name="pizza-outline"
                 size={25}
-                color={pressedPizza ? "#4242EC" : "white"}
+                color={pressedPizza ? "#4242EC" : "grey"}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -76,7 +76,7 @@ const Eateries = ({
               <FontAwesome5
                 name="hamburger"
                 size={25}
-                color={pressedBurger ? "#FFDB58" : "white"}
+                color={pressedBurger ? "#FFDB58" : "grey"}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -88,7 +88,7 @@ const Eateries = ({
               <Feather
                 name="coffee"
                 size={25}
-                color={pressedCoffee ? "#E9985F" : "white"}
+                color={pressedCoffee ? "#E9985F" : "grey"}
               />
             </TouchableOpacity>
           </Animated.View>
@@ -96,7 +96,7 @@ const Eateries = ({
         <TouchableOpacity onPress={toggleExpansion}>
           <View style={[styles.circleButton, styles.chevronContainer]}>
             <Animated.View style={{ transform: [{ rotate: rotateChevron }] }}>
-              <AntDesign name="down" size={18} color={"white"} />
+              <AntDesign name="down" size={18} color={"grey"} />
             </Animated.View>
           </View>
         </TouchableOpacity>
@@ -115,16 +115,19 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   chevronContainer: {
-    marginTop: 10,
+    marginTop: 5,
   },
   circleButton: {
-    width: 40,
-    height: 40,
+    borderColor: "rgba(192, 160, 128, 0.5)",
+    borderWidth: 2,
+    backgroundColor: "#171717",
+    width: 50,
+    height: 50,
     borderRadius: 10,
-    backgroundColor: "grey",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 10,
+    padding: 10,
   },
 });
 
