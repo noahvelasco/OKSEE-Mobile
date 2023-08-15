@@ -8,10 +8,24 @@ import {
   StyleSheet,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { weatherType } from "../../../utils/weatherType";
+
+import moment from "moment/moment";
 
 import ListItem from "./ListItem";
 
-const WeatherModal = ({ city, weather, modalVisible, setModalVisible }) => {
+const WeatherModal = ({
+  city,
+  weather,
+  currWeather,
+  modalVisible,
+  setModalVisible,
+}) => {
+  const currTemp = currWeather.main?.temp;
+  const currHum = currWeather.main?.humidity;
+  const currPrec = currWeather.rain;
+  const weatherCondition = currWeather.weather[0]?.main; //rain/snow/sunny/etc.
+
   const renderItem = ({ item }) => (
     <ListItem
       dt_txt={item.dt_txt}
@@ -36,6 +50,36 @@ const WeatherModal = ({ city, weather, modalVisible, setModalVisible }) => {
             {`${city} `}
             <Feather name="map-pin" size={28} color="white" />
           </Text>
+
+          <View style={styles.currWeathContainer}>
+            <Text
+              style={[styles.currWeathHeaderText, styles.currWeathHeaderDate]}
+            >
+              {"⨀ " + moment().calendar()}
+            </Text>
+            <View style={styles.currWeathHeader}>
+              <Feather
+                name={weatherType[weatherCondition].icon}
+                size={30}
+                color="#C0A080"
+              />
+
+              <Text style={styles.currWeathHeaderText}>
+                {"\t" + weatherType[weatherCondition]?.description}
+              </Text>
+            </View>
+
+            <View style={styles.currWeathSubHeader}>
+              <Text style={styles.currWeathSubHeaderText}>
+                {Math.round(currTemp)}°
+              </Text>
+              <Text style={styles.currWeathSubHeaderText}>{currPrec}</Text>
+              <Text style={styles.currWeathSubHeaderText}>
+                {currHum}% Humidity
+              </Text>
+            </View>
+          </View>
+
           <View
             style={{
               borderBottomColor: "white",
@@ -90,6 +134,27 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
   },
+  currWeathContainer: {
+    marginVertical: 20,
+  },
+  currWeathHeaderDate: {
+    marginBottom: 10,
+  },
+  currWeathHeader: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  currWeathHeaderText: {
+    color: "white",
+  },
+  currWeathSubHeader: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  currWeathSubHeaderText: {
+    color: "white",
+  },
+
   textClose: {
     color: "white",
   },

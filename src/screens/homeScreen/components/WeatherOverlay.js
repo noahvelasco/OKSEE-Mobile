@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
+
 import { weatherType } from "../../../utils/weatherType";
 
-const WeatherOverlay = ({ allWeather }) => {
-  const currWeather = allWeather.list[0];
+const WeatherOverlay = ({ currWeather }) => {
+  // console.log(currWeather);
   const {
     main: { temp },
     weather,
@@ -21,6 +22,7 @@ const WeatherOverlay = ({ allWeather }) => {
       />
 
       <View>
+        {/* <Text>{moment(dt).format("MMMM Do YYYY, h:mm:ss a")}</Text> */}
         <Text style={styles.temp}>{Math.round(temp)}°</Text>
         <Text style={styles.forecast}>
           {weatherType[weatherCondition].description}

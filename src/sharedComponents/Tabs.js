@@ -10,7 +10,7 @@ import Locations from "../screens/locationsScreen/Locations";
 
 const Tab = createBottomTabNavigator();
 
-function Tabs({ weather }) {
+function Tabs({ currWeather, forecast }) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -43,7 +43,7 @@ function Tabs({ weather }) {
           ),
         }}
       >
-        {() => <Home weather={weather} />}
+        {() => <Home currWeather={currWeather} forecast={forecast} />}
       </Tab.Screen>
 
       <Tab.Screen

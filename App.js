@@ -11,16 +11,16 @@ import Error from "./src/screens/Error";
 const Tab = createBottomTabNavigator(); //Initialize the tab object
 
 export default function App() {
-  //upon initialization, get the weather and users location
-  const [loading, error, weather] = useGetWeather();
+  //upon initialization, get the weather (future and current) and users location
+  const [loading, error, currWeather, forecast] = useGetWeather();
 
   /*
   Home Screen if we retrieved the weather
   */
-  if (weather && weather.list && !loading) {
+  if (forecast && forecast.list && !loading) {
     return (
       <NavigationContainer>
-        <Tabs weather={weather} />
+        <Tabs currWeather={currWeather} forecast={forecast} />
       </NavigationContainer>
     );
   }

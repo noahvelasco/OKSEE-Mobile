@@ -8,7 +8,7 @@ import WeatherModal from "./components/WeatherModal";
 import { locations } from "../../utils/locations";
 import mapStyle from "../../utils/mapStyle.json";
 
-const Home = ({ weather }) => {
+const Home = ({ currWeather, forecast }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pressedPizza, setPizza] = useState(false);
   const [pressedBurger, setBurger] = useState(false);
@@ -65,11 +65,12 @@ const Home = ({ weather }) => {
       {/* This is the weather component at the top - when clicked the full weather comes up */}
       <View style={styles.weather}>
         <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <WeatherOverlay allWeather={weather} />
+          <WeatherOverlay currWeather={currWeather} />
         </TouchableOpacity>
         <WeatherModal
-          city={weather.city.name}
-          weather={weather.list}
+          currWeather={currWeather}
+          city={forecast.city.name}
+          weather={forecast.list}
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
         />
