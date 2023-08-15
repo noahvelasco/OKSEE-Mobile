@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator(); //Initialize the tab object
 
 export default function App() {
   //upon initialization, get the weather and users location
-  const [loading, error, weather, lat, lon] = useGetWeather();
+  const [loading, error, weather] = useGetWeather();
 
   /*
   Home Screen if we retrieved the weather
