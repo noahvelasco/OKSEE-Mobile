@@ -62,9 +62,9 @@ const Eateries = ({
               }}
             >
               <Ionicons
-                name="pizza-outline"
+                name="triangle-outline"
                 size={25}
-                color={pressedPizza ? "#4242EC" : "grey"}
+                color={pressedPizza ? "#FFFACD" : "grey"}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -73,10 +73,10 @@ const Eateries = ({
                 setBurger((prevState) => !prevState);
               }}
             >
-              <FontAwesome5
-                name="hamburger"
+              <Ionicons
+                name="menu"
                 size={25}
-                color={pressedBurger ? "#FFDB58" : "grey"}
+                color={pressedBurger ? "#D2691E" : "grey"}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -85,10 +85,10 @@ const Eateries = ({
                 setCoffee((prevState) => !prevState);
               }}
             >
-              <Feather
-                name="coffee"
-                size={25}
-                color={pressedCoffee ? "#E9985F" : "grey"}
+              <FontAwesome5
+                name="bullseye"
+                size={24}
+                color={pressedCoffee ? "#EEA977" : "grey"}
               />
             </TouchableOpacity>
           </Animated.View>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#171717",
     width: 50,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 10,

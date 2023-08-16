@@ -10,9 +10,10 @@ export const useGetWeather = () => {
   const [error, setError] = useState(null);
   const [forecast, setForecast] = useState([]);
   const [currWeather, setCurrWeather] = useState([]);
-  const [lat, setLat] = useState([]);
-  const [lon, setLon] = useState([]);
+  const [lat, setLat] = useState(35.4676);
+  const [lon, setLon] = useState(-97.5164);
   const fetchWeatherData = async () => {
+    console.log(`infetch - lat=${lat} and lon=${lon}`);
     try {
       //Get the current weather
       const res1 = await fetch(
@@ -27,11 +28,11 @@ export const useGetWeather = () => {
       );
       const data2 = await res2.json();
       setForecast(data2);
-
-      setLoading(false);
     } catch (e) {
+      console.log("infetch error");
       setError("Could not fetch weather");
     } finally {
+      console.log("infetch finally");
       setLoading(false);
     }
   };
@@ -39,15 +40,19 @@ export const useGetWeather = () => {
   // Get the location of the user - expo geolocation
   useEffect(() => {
     (async () => {
+      console.log("inuseeffect");
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setError("Permission to access location was denied");
-        return;
-      }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLat(location.coords.latitude);
-      setLon(location.coords.longitude);
+      console.log(status, typeof status);
+      //if access is granted to location => get specific location to get local weather, else it defaults to OKC
+      if (status === "granted") {
+        let location = await Location.getCurrentPositionAsync({});
+
+        setLat(location.coords.latitude);
+        setLon(location.coords.longitude);
+      }
+      console.log("goingtofetch");
+
       await fetchWeatherData();
     })();
   }, [lat, lon]);

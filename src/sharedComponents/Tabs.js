@@ -15,7 +15,6 @@ function Tabs({ currWeather, forecast }) {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "#C0A080",
-        tabBarInactiveTintColor: "white",
         tabBarStyle: {
           backgroundColor: "#171717",
         },

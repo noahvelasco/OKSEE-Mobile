@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, StatusBar, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 import WeatherOverlay from "./components/WeatherOverlay";
@@ -15,6 +22,9 @@ const Home = ({ currWeather, forecast }) => {
   const [pressedCoffee, setCoffee] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(0.25);
 
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
+
   //custom map style
   const styleMap = mapStyle;
 
@@ -28,9 +38,13 @@ const Home = ({ currWeather, forecast }) => {
             key={index}
             coordinate={item.coordinate}
             title={item.title}
-            pinColor={"#000080"}
             description={item.description}
-          />
+          >
+            <Image
+              source={require("../../../assets/images/marker.png")}
+              style={{ width: 30, height: 30, tintColor: "#FFFACD" }}
+            />
+          </Marker>
         );
       }
       if (pressedBurger && item.category == "burger") {
@@ -39,9 +53,13 @@ const Home = ({ currWeather, forecast }) => {
             key={index}
             coordinate={item.coordinate}
             title={item.title}
-            pinColor={`#FFDB58`}
             description={item.description}
-          />
+          >
+            <Image
+              source={require("../../../assets/images/marker.png")}
+              style={{ width: 30, height: 30, tintColor: "#D2691E" }}
+            />
+          </Marker>
         );
       }
       if (pressedCoffee && item.category == "coffee") {
@@ -50,9 +68,13 @@ const Home = ({ currWeather, forecast }) => {
             key={index}
             coordinate={item.coordinate}
             title={item.title}
-            pinColor={"#D2691E"}
             description={item.description}
-          />
+          >
+            <Image
+              source={require("../../../assets/images/marker.png")}
+              style={{ width: 30, height: 30, tintColor: "#EEA977" }}
+            />
+          </Marker>
         );
       }
     });
@@ -91,6 +113,13 @@ const Home = ({ currWeather, forecast }) => {
         showsUserLocation={true}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
+        showsCompass={true}
+        showsMyLocationButton={false}
+        showsBuildings={true}
+        liteMode={false}
+        userInterfaceStyle="dark"
+        toolbarEnabled={false}
+        // mapPadding={{ left: windowWidth * 0.85 }}
         initialRegion={{
           latitude: 35.4676,
           longitude: -97.5164,
@@ -123,7 +152,7 @@ const styles = StyleSheet.create({
   eateries: {
     position: "absolute",
     right: 12,
-    bottom: 45,
+    bottom: 0,
     alignSelf: "flex-end",
     zIndex: 1,
   },

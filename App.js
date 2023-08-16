@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, StyleSheet, SafeAreaView } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -15,9 +21,15 @@ export default function App() {
   const [loading, error, currWeather, forecast] = useGetWeather();
 
   /*
-  Home Screen if we retrieved the weather
+  Home Screen if we retrieved the current weather and the forecast
   */
-  if (forecast && forecast.list && !loading) {
+  if (
+    currWeather &&
+    currWeather.main &&
+    forecast &&
+    forecast.list &&
+    !loading
+  ) {
     return (
       <NavigationContainer>
         <Tabs currWeather={currWeather} forecast={forecast} />
@@ -33,7 +45,19 @@ export default function App() {
       {error ? (
         <Error />
       ) : (
-        <ActivityIndicator size={"large"} color={"#C0A080"} />
+        <View>
+          <Text
+            style={{
+              alignSelf: "center",
+              marginVertical: 20,
+              color: "#C0A080",
+              fontSize: 20,
+            }}
+          >
+            Loading...
+          </Text>
+          <ActivityIndicator size={"large"} color={"#C0A080"} />
+        </View>
       )}
     </SafeAreaView>
   );
