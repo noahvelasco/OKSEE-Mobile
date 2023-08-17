@@ -1,25 +1,37 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+import SearchBar from "./components/SearchBar";
+import FilterChips from "./components/FilterChips";
+
 const Locations = () => {
-  const [value, onChangeText] = React.useState("");
+  const [value, onChangeText] = useState("");
+  const [filters, setFilters] = useState({
+    pizzaFilter: false,
+    burgersFilter: false,
+    cafeFilter: false,
+  });
+
+  console.log(filters);
+
   return (
     <LinearGradient
       style={styles.container}
       colors={["#E9D0B0", "#C0A080", "#9C715F", "#171717"]}
     >
-      <View style={styles.searchSection}>
+      <View style={styles.titleContainer}>
         <Text style={styles.title}>Locations</Text>
-        <TextInput
-          cursorColor={"black"}
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={value}
-          placeholder="Hall's Pizzeria"
-        />
       </View>
 
+      <SearchBar
+        style={styles.searchContainer}
+        value={value}
+        onChangeText={onChangeText}
+      />
+      <View style={styles.chipContainer}>
+        <FilterChips filters={filters} setFilters={setFilters} />
+      </View>
       <View style={styles.listSection}>
         <Text>List Section</Text>
       </View>
@@ -28,11 +40,26 @@ const Locations = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "gray" },
-  searchSection: {
+  container: {
+    flex: 1,
+    backgroundColor: "gray",
+  },
+  titleContainer: {
+    flex: 0.25,
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 40,
+    color: "#503B32",
+  },
+  searchContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+  },
+  chipContainer: {
+    flex: 0.25,
+    justifyContent: "center",
+    marginBottom: 10,
   },
   listSection: {
     flex: 3,
@@ -41,18 +68,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     justifyContent: "center",
     alignItems: "center",
-  },
-  title: {
-    fontSize: 40,
-    color: "#171717",
-  },
-  input: {
-    height: 40,
-    width: "75%",
-    margin: 12,
-    borderWidth: 1,
-    borderRadius: 20,
-    padding: 10,
   },
 });
 
