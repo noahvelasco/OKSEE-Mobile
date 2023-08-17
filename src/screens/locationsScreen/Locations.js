@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import SearchBar from "./components/SearchBar";
 import FilterChips from "./components/FilterChips";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Locations = () => {
   const [value, onChangeText] = useState("");
@@ -16,12 +17,9 @@ const Locations = () => {
   console.log(filters);
 
   return (
-    <LinearGradient
-      style={styles.container}
-      colors={["#E9D0B0", "#C0A080", "#9C715F", "#171717"]}
-    >
+    <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Locations</Text>
+        <Text style={styles.title}>Establishments</Text>
       </View>
 
       <SearchBar
@@ -35,31 +33,33 @@ const Locations = () => {
       <View style={styles.listSection}>
         <Text>List Section</Text>
       </View>
-    </LinearGradient>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "gray",
+    backgroundColor: "#171717",
   },
   titleContainer: {
     flex: 0.25,
     alignItems: "center",
   },
   title: {
-    fontSize: 40,
-    color: "#503B32",
+    fontSize: 35,
+    color: "#C0A080",
+    fontFamily: "",
   },
   searchContainer: {
     flex: 1,
     justifyContent: "center",
+    marginBottom: 5,
   },
   chipContainer: {
     flex: 0.25,
     justifyContent: "center",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   listSection: {
     flex: 3,

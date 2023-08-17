@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 const Eateries = ({

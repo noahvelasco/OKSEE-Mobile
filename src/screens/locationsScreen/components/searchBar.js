@@ -5,11 +5,13 @@ const SearchBar = ({ value, onChangeText }) => {
   return (
     <View style={styles.searchBar}>
       <TextInput
-        cursorColor={"black"}
+        color={"white"}
+        cursorColor={"white"}
         style={styles.input}
         onChangeText={onChangeText}
         value={value}
         placeholder="Hall's Pizzeria"
+        placeholderTextColor={"white"}
       />
     </View>
   );
@@ -23,9 +25,10 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: "85%",
-    margin: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 20,
+    borderColor: "#C0A080",
+    backgroundColor: "#333333",
     padding: 10,
   },
 });
