@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { View, Text, SafeAreaView, FlatList, StyleSheet } from "react-native";
 
 import SearchBar from "./components/SearchBar";
 import FilterChips from "./components/FilterChips";
-import { SafeAreaView } from "react-native-safe-area-context";
+
+import { locations } from "../../utils/locations";
+import LocationItem from "./components/LocationItem";
 
 const Locations = () => {
   const [value, onChangeText] = useState("");
@@ -14,7 +15,16 @@ const Locations = () => {
     cafeFilter: false,
   });
 
-  console.log(filters);
+  const renderItem = ({ item }) => (
+    <LocationItem
+      category={item.category}
+      title={item.title}
+      rating={item.rating}
+      hours={item.hours}
+      serviceOptions={item.serviceOptions}
+      thumbnail={item.thumbnail}
+    />
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -31,7 +41,11 @@ const Locations = () => {
         <FilterChips filters={filters} setFilters={setFilters} />
       </View>
       <View style={styles.listSection}>
-        <Text>List Section</Text>
+        <FlatList
+          data={locations}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.title}
+        />
       </View>
     </SafeAreaView>
   );
@@ -66,8 +80,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(100,100,100,.4)",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 
