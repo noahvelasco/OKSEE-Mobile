@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Stack, Chip } from "@react-native-material/core";
-import { Octicons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
