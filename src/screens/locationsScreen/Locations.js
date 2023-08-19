@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  SafeAreaView,
   FlatList,
   StyleSheet,
-  ImageBackground,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 
 import SearchBar from "./components/SearchBar";
@@ -15,7 +16,7 @@ import { locations } from "../../utils/locations";
 import LocationItem from "./components/LocationItem";
 
 const Locations = () => {
-  const [value, onChangeText] = useState("");
+  const [searchValue, onChangeText] = useState("");
   const [filters, setFilters] = useState({
     pizzaFilter: true,
     burgersFilter: true,
@@ -29,8 +30,8 @@ const Locations = () => {
       (key) => filters[key] === true
     );
 
-    //if the item is part of the filter requested then return the item
-    if (setFilters.includes(item.associatedFilter)) {
+    //if the item is part of the filter requested then return the item iff it passes filter
+    if (searchValue == "" && setFilters.includes(item.associatedFilter)) {
       return (
         <LocationItem
           category={item.category}
@@ -42,31 +43,60 @@ const Locations = () => {
         />
       );
     }
+    //if they have the filters on and the value in search box is not empty then continue
+    else if (searchValue != "" && setFilters.includes(item.associatedFilter)) {
+      //if the search box value is a substring of the item
+      if (
+        item.title.substring(0, searchValue.length).toLowerCase() ==
+        searchValue.toLowerCase()
+      ) {
+        return (
+          <LocationItem
+            category={item.category}
+            title={item.title}
+            rating={item.rating}
+            hours={item.hours}
+            serviceOptions={item.serviceOptions}
+            thumbnail={item.thumbnail}
+          />
+        );
+      }
+    }
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Establishments</Text>
-      </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Establishments</Text>
+        </View>
 
-      <SearchBar
-        style={styles.searchContainer}
-        value={value}
-        onChangeText={onChangeText}
-      />
-      <View style={styles.chipContainer}>
-        <FilterChips filters={filters} setFilters={setFilters} />
-      </View>
+        <View style={styles.searchContainer}>
+          <SearchBar value={searchValue} onChangeText={onChangeText} />
+        </View>
 
-      <View style={styles.listSection}>
-        <FlatList
-          data={locations}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.title}
+        <View style={styles.chipContainer}>
+          <FilterChips filters={filters} setFilters={setFilters} />
+        </View>
+
+        <Image
+          style={styles.logo}
+          resizeMode="contain"
+          source={require("../../../assets/splash.png")}
         />
+
+        <View style={styles.listSection}>
+          <FlatList
+            data={locations}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.title}
+          />
+        </View>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -78,27 +108,38 @@ const styles = StyleSheet.create({
   titleContainer: {
     flex: 0.25,
     alignItems: "center",
+    zIndex: 2,
   },
   title: {
-    fontSize: 35,
+    fontSize: 30,
     color: "#C0A080",
     fontFamily: "",
   },
   searchContainer: {
-    flex: 1,
+    flex: 0.4,
     justifyContent: "center",
+    zIndex: 2,
     marginBottom: 5,
   },
   chipContainer: {
     flex: 0.25,
     justifyContent: "center",
+    zIndex: 2,
     marginBottom: 5,
   },
   listSection: {
+    zIndex: 2,
     flex: 3,
     backgroundColor: "rgba(100,100,100,.4)",
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
+  logo: {
+    zIndex: 1,
+    top: "30%",
+    width: "100%",
+    position: "absolute",
+    alignSelf: "center",
   },
 });
 
