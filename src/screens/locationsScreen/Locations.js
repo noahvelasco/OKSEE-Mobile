@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, SafeAreaView, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
 
 import SearchBar from "./components/SearchBar";
 import FilterChips from "./components/FilterChips";
@@ -10,21 +17,32 @@ import LocationItem from "./components/LocationItem";
 const Locations = () => {
   const [value, onChangeText] = useState("");
   const [filters, setFilters] = useState({
-    pizzaFilter: false,
-    burgersFilter: false,
-    cafeFilter: false,
+    pizzaFilter: true,
+    burgersFilter: true,
+    cafeFilter: true,
   });
 
-  const renderItem = ({ item }) => (
-    <LocationItem
-      category={item.category}
-      title={item.title}
-      rating={item.rating}
-      hours={item.hours}
-      serviceOptions={item.serviceOptions}
-      thumbnail={item.thumbnail}
-    />
-  );
+  const renderItem = ({ item }) => {
+    //setFilters: returns an array of the filters that are set to true
+    //ex. ["pizzaFilter", "burgersFilter", "cafeFilter"] will be returned on initial render so no filter is on.
+    const setFilters = Object.keys(filters).filter(
+      (key) => filters[key] === true
+    );
+
+    //if the item is part of the filter requested then return the item
+    if (setFilters.includes(item.associatedFilter)) {
+      return (
+        <LocationItem
+          category={item.category}
+          title={item.title}
+          rating={item.rating}
+          hours={item.hours}
+          serviceOptions={item.serviceOptions}
+          thumbnail={item.thumbnail}
+        />
+      );
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,6 +58,7 @@ const Locations = () => {
       <View style={styles.chipContainer}>
         <FilterChips filters={filters} setFilters={setFilters} />
       </View>
+
       <View style={styles.listSection}>
         <FlatList
           data={locations}

@@ -26,7 +26,7 @@ const LocationItem = (props) => {
       </View>
 
       <TouchableOpacity style={styles.mapButton}>
-        <Text>Map</Text>
+        <Text style={styles.mapText}>Map</Text>
       </TouchableOpacity>
     </View>
   );
@@ -77,11 +77,13 @@ const styles = StyleSheet.create({
 
   mapButton: {
     backgroundColor: "#C0A080",
-
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
+  },
+  mapText: {
+    color: "white",
   },
 });
 

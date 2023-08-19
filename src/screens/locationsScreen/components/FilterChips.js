@@ -4,7 +4,7 @@ import { Stack, Chip } from "@react-native-material/core";
 import { Octicons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const FilterChips = ({ filters, setFilters }) => {
   return (
@@ -22,7 +22,7 @@ const FilterChips = ({ filters, setFilters }) => {
         color="white"
         leading={
           filters.pizzaFilter ? (
-            <Octicons name="dot-fill" size={24} color="#C0A080" />
+            <Feather name="x-circle" size={24} color="#C0A080" />
           ) : (
             ""
           )
@@ -47,7 +47,7 @@ const FilterChips = ({ filters, setFilters }) => {
         color="white"
         leading={
           filters.burgersFilter ? (
-            <Octicons name="dot-fill" size={24} color="#C0A080" />
+            <Feather name="x-circle" size={24} color="#C0A080" />
           ) : (
             ""
           )
@@ -72,7 +72,7 @@ const FilterChips = ({ filters, setFilters }) => {
         color="white"
         leading={
           filters.cafeFilter ? (
-            <Octicons name="dot-fill" size={24} color="#C0A080" />
+            <Feather name="x-circle" size={24} color="#C0A080" />
           ) : (
             ""
           )
