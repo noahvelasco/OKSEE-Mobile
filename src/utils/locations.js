@@ -3,6 +3,7 @@
 export const locations = [
   {
     category: "pizza",
+    associatedFilter: "pizzaFilter",
     title: "Sauced on Paseo",
     serviceOptions: "Dine-in · Takeout · No-contact delivery",
     rating: "4.5 (1,174)",
@@ -16,6 +17,7 @@ export const locations = [
   },
   {
     category: "pizza",
+    associatedFilter: "pizzaFilter",
     title: "The Hall's Pizza Kitchen",
     serviceOptions: "Dine-in · Curbside pickup · Delivery",
     rating: "4.6 (1,623)",
@@ -29,6 +31,7 @@ export const locations = [
   },
   {
     category: "burger",
+    associatedFilter: "burgersFilter",
     title: "Nic's Grill",
     serviceOptions: "Dine-in · Takeout · No delivery",
     rating: "4.6 (1,197)",
@@ -42,6 +45,7 @@ export const locations = [
   },
   {
     category: "burger",
+    associatedFilter: "burgersFilter",
     title: "Tucker's Onion Burger",
     serviceOptions: "Dine-in · Curbside pickup",
     rating: "4.6 (2,422)",
@@ -55,6 +59,7 @@ export const locations = [
   },
   {
     category: "coffee",
+    associatedFilter: "cafeFilter",
     title: "Harvey Bakery & Kitchen",
     serviceOptions: "Dine-in · Takeout · Delivery",
     rating: "4.6 (380)",
@@ -69,6 +74,7 @@ export const locations = [
   },
   {
     category: "coffee",
+    associatedFilter: "cafeFilter",
     title: "Coffee Slingers Roasters",
     serviceOptions: "Dine-in · Takeout · No delivery",
     rating: "4.4 (806)",
