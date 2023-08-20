@@ -14,8 +14,12 @@ import FilterChips from "./components/FilterChips";
 
 import { locations } from "../../utils/locations";
 import LocationItem from "./components/LocationItem";
+import SelectedLocation from "../selectedLocationScreen/SelectedLocation";
 
 const Locations = () => {
+  const [modalVisible, setModalVisible] = useState(false); //if a user clicks on 'map' for an item => show modal
+  const [selectedLocCoords, setSelectedLocCoords] = useState([]); // selected location coordinates
+  const [selectedLocName, setSelectedLocName] = useState(""); // selected location coordinates
   const [searchValue, onChangeText] = useState("");
   const [filters, setFilters] = useState({
     pizzaFilter: true,
@@ -38,13 +42,18 @@ const Locations = () => {
           title={item.title}
           rating={item.rating}
           hours={item.hours}
+          coords={item.coordinate}
           serviceOptions={item.serviceOptions}
           thumbnail={item.thumbnail}
+          setSelectedLocCoords={setSelectedLocCoords}
+          setSelectedLocName={setSelectedLocName}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
         />
       );
     }
     //if they have the filters on and the value in search box is not empty then continue
-    else if (searchValue != "" && setFilters.includes(item.associatedFilter)) {
+    if (searchValue != "" && setFilters.includes(item.associatedFilter)) {
       //if the search box value is a substring of the item
       if (
         item.title.substring(0, searchValue.length).toLowerCase() ==
@@ -56,8 +65,13 @@ const Locations = () => {
             title={item.title}
             rating={item.rating}
             hours={item.hours}
+            coords={item.coordinate}
             serviceOptions={item.serviceOptions}
             thumbnail={item.thumbnail}
+            setSelectedLocCoords={setSelectedLocCoords}
+            setSelectedLocName={setSelectedLocName}
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
           />
         );
       }
@@ -95,6 +109,13 @@ const Locations = () => {
             keyExtractor={(item) => item.title}
           />
         </View>
+
+        <SelectedLocation
+          title={selectedLocName}
+          coords={selectedLocCoords}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
       </View>
     </KeyboardAvoidingView>
   );

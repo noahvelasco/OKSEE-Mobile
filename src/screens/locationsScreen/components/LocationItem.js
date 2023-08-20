@@ -3,9 +3,18 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 import { MaterialIcons } from "@expo/vector-icons";
 
-const LocationItem = (props) => {
-  const { category, title, rating, hours, serviceOptions, thumbnail } = props;
-
+const LocationItem = ({
+  category,
+  title,
+  rating,
+  hours,
+  coords,
+  setSelectedLocName,
+  setSelectedLocCoords,
+  serviceOptions,
+  thumbnail,
+  setModalVisible,
+}) => {
   return (
     <View style={styles.item}>
       <View style={styles.titleSection}>
@@ -25,7 +34,14 @@ const LocationItem = (props) => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.mapButton}>
+      <TouchableOpacity
+        style={styles.mapButton}
+        onPress={() => {
+          setModalVisible(true);
+          setSelectedLocName(title);
+          setSelectedLocCoords([coords.latitude, coords.longitude]);
+        }}
+      >
         <Text style={styles.mapText}>Map</Text>
       </TouchableOpacity>
     </View>
