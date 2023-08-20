@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  Dimensions,
 } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
@@ -20,10 +19,6 @@ const Home = ({ currWeather, forecast }) => {
   const [pressedPizza, setPizza] = useState(false);
   const [pressedBurger, setBurger] = useState(false);
   const [pressedCoffee, setCoffee] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(0.25);
-
-  const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
 
   //custom map style
   const styleMap = mapStyle;
@@ -34,12 +29,7 @@ const Home = ({ currWeather, forecast }) => {
       //if pizza button pressed then show its markers
       if (pressedPizza && item.category == "pizza") {
         return (
-          <Marker
-            key={index}
-            coordinate={item.coordinate}
-            title={item.title}
-            description={item.description}
-          >
+          <Marker key={index} coordinate={item.coordinate} title={item.title}>
             <Image
               source={require("../../../assets/images/marker.png")}
               style={{ width: 30, height: 30, tintColor: "#FFFACD" }}
@@ -49,12 +39,7 @@ const Home = ({ currWeather, forecast }) => {
       }
       if (pressedBurger && item.category == "burger") {
         return (
-          <Marker
-            key={index}
-            coordinate={item.coordinate}
-            title={item.title}
-            description={item.description}
-          >
+          <Marker key={index} coordinate={item.coordinate} title={item.title}>
             <Image
               source={require("../../../assets/images/marker.png")}
               style={{ width: 30, height: 30, tintColor: "#D2691E" }}
@@ -64,12 +49,7 @@ const Home = ({ currWeather, forecast }) => {
       }
       if (pressedCoffee && item.category == "coffee") {
         return (
-          <Marker
-            key={index}
-            coordinate={item.coordinate}
-            title={item.title}
-            description={item.description}
-          >
+          <Marker key={index} coordinate={item.coordinate} title={item.title}>
             <Image
               source={require("../../../assets/images/marker.png")}
               style={{ width: 30, height: 30, tintColor: "#EEA977" }}
@@ -123,8 +103,8 @@ const Home = ({ currWeather, forecast }) => {
         initialRegion={{
           latitude: 35.4676,
           longitude: -97.5164,
-          latitudeDelta: zoomLevel, // Controls the zoom level (latitude span)
-          longitudeDelta: zoomLevel, // Controls the zoom level (longitude span)
+          latitudeDelta: 0.05, // Controls the zoom level (latitude span)
+          longitudeDelta: 0.05, // Controls the zoom level (longitude span)
         }}
         customMapStyle={styleMap}
       >
