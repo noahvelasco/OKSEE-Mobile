@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -7,14 +7,11 @@ import {
   View,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Tabs from "./src/sharedComponents/Tabs";
 
 import { useGetWeather } from "./src/hooks/useGetWeather";
 import Error from "./src/screens/Error";
-
-const Tab = createBottomTabNavigator(); //Initialize the tab object
 
 export default function App() {
   //upon initialization, get the weather (future and current) and users location
