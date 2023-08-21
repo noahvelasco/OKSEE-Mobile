@@ -103,8 +103,8 @@ const Home = ({ currWeather, forecast }) => {
         initialRegion={{
           latitude: 35.4676,
           longitude: -97.5164,
-          latitudeDelta: 0.05, // Controls the zoom level (latitude span)
-          longitudeDelta: 0.05, // Controls the zoom level (longitude span)
+          latitudeDelta: 0.075, // Controls the zoom level (latitude span)
+          longitudeDelta: 0.075, // Controls the zoom level (longitude span)
         }}
         customMapStyle={styleMap}
       >
