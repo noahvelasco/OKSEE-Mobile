@@ -5,16 +5,23 @@ import {
   Text,
   StyleSheet,
   Image,
-  Pressable,
   TouchableOpacity,
 } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import mapStyle from "../../utils/mapStyle.json";
 
-const SelectedLocation = ({ title, coords, modalVisible, setModalVisible }) => {
+const SelectedLocation = ({
+  title,
+  rating,
+  address,
+  coords,
+  modalVisible,
+  setModalVisible,
+}) => {
   const [satelliteView, setSatelliteView] = useState(false);
 
   //animation to circle map
@@ -45,8 +52,13 @@ const SelectedLocation = ({ title, coords, modalVisible, setModalVisible }) => {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <View style={styles.titleWrapper}>
-            <Text style={styles.titleText}>{title}</Text>
+          <View style={styles.headerWrapper}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.rating}>
+              <MaterialIcons name="star-half" size={20} color="#A39300" />
+              {rating}
+            </Text>
+            <Text style={styles.address}>{address}</Text>
           </View>
           <View style={styles.mapWrapper}>
             <MapView
@@ -130,8 +142,10 @@ const styles = StyleSheet.create({
     padding: 20, // Add padding for space
   },
 
-  titleWrapper: { alignItems: "center", overflow: "hidden" },
-  titleText: { color: "white", fontSize: 25 },
+  headerWrapper: { alignItems: "center", overflow: "hidden" },
+  title: { color: "white", fontSize: 25 },
+  rating: { color: "white", fontSize: 15 },
+  address: { color: "grey", fontSize: 15 },
 
   mapWrapper: {
     flex: 0.75,

@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const LocationItem = ({
   category,
@@ -9,8 +10,11 @@ const LocationItem = ({
   rating,
   hours,
   coords,
+  address,
   setSelectedLocName,
   setSelectedLocCoords,
+  setSelectedLocRating,
+  setSelectedLocAdress,
   serviceOptions,
   thumbnail,
   setModalVisible,
@@ -40,9 +44,14 @@ const LocationItem = ({
           setModalVisible(true);
           setSelectedLocName(title);
           setSelectedLocCoords([coords.latitude, coords.longitude]);
+          setSelectedLocRating(rating);
+          setSelectedLocAdress(address);
         }}
       >
-        <Text style={styles.mapText}>Map</Text>
+        <Text style={styles.mapText}>
+          {"Bird's Eye View\t\t"}
+          <Ionicons name="eye" size={15} color="white" />
+        </Text>
       </TouchableOpacity>
     </View>
   );
