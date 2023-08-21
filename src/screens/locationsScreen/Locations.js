@@ -108,7 +108,7 @@ const Locations = () => {
         <Image
           style={styles.logo}
           resizeMode="contain"
-          source={require("../../../assets/splash.png")}
+          source={require("../../../assets/images/splash.png")}
         />
 
         <View style={styles.listSection}>
