@@ -39,6 +39,8 @@ TBA
 - [x] Establishments filter chips
 - [x] Selected Location Birds Eye View
 - [x] Introduction Screen 
+- [x] Comment cleanup
+- [] Documentation
 - [ ] QA (Android + iOS)
 - [ ] Publish to App Store
 

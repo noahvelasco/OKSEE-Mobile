@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { Stack, Chip } from "@react-native-material/core";
 import { Ionicons } from "@expo/vector-icons";

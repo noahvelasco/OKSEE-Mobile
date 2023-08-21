@@ -1,6 +1,5 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -32,7 +31,7 @@ function Tabs({ currWeather, forecast }) {
       <Tab.Screen
         name="Home"
         options={{
-          // tabBarLabel: "", // Add this line to remove the tab bar text
+          tabBarLabel: "Map", // Add this line to remove the tab bar text
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="map-outline"
@@ -48,7 +47,7 @@ function Tabs({ currWeather, forecast }) {
       <Tab.Screen
         name="Locations"
         options={{
-          // tabBarLabel: "", // Add this line to remove the tab bar text
+          tabBarLabel: "Est.", // Add this line to remove the tab bar text
           tabBarIcon: ({ focused }) => (
             <Feather
               name="list"

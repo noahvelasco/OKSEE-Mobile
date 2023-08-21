@@ -1,5 +1,3 @@
-//TODO - transform into sqlite DB later on
-
 export const locations = [
   {
     category: "pizza",

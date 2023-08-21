@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import LottieView from "lottie-react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -51,14 +50,14 @@ export default function App() {
           style={{ flex: 0.25, alignItems: "center", justifyContent: "center" }}
         >
           <LottieView
-            source={item.lottie} // You will replace 'image' with 'lottie'
+            source={item.lottie}
             autoPlay
             loop
             style={{
               width: "80%",
               aspectRatio: 1,
               backgroundColor: "rgba(200,200,200.4)",
-            }} // Adjust size as necessary
+            }}
           />
         </View>
 
@@ -109,8 +108,6 @@ export default function App() {
     );
   }
 }
-
-// ... [rest of your imports and main code]
 
 const styles = StyleSheet.create({
   container: {
@@ -186,5 +183,3 @@ const slides = [
     backgroundColor: "#171717",
   },
 ];
-
-// ... [rest of your code]
