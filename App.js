@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -8,16 +8,30 @@ import {
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import LottieView from "lottie-react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { NavigationContainer } from "@react-navigation/native";
 
+import { setSawIntro, sawIntro } from "./src/utils/AsyncStorage";
 import { useGetWeather } from "./src/hooks/useGetWeather";
 import Tabs from "./src/sharedComponents/Tabs";
 import Error from "./src/screens/Error";
 
 export default function App() {
   const [loading, error, currWeather, forecast] = useGetWeather();
-  const [showRealApp, setShowRealApp] = useState(false);
+  // Add these state variables at the beginning of your App component:
+  const [hasSeenIntro, setHasSeenIntro] = useState(null);
+
+  //check if user has been on app  before to show intro screen if user hasnt seen it yet
+  useEffect(() => {
+    // Fetch the value when the component mounts
+    const fetchIntroValue = async () => {
+      const value = await sawIntro();
+      setHasSeenIntro(value);
+    };
+
+    fetchIntroValue();
+  }, [hasSeenIntro]);
 
   //This is how each introduction screen will be rendered
   const RenderItem = ({ item }) => {
@@ -53,7 +67,7 @@ export default function App() {
     );
   };
 
-  if (showRealApp) {
+  if (hasSeenIntro === "true") {
     if (
       currWeather &&
       currWeather.main &&
@@ -85,7 +99,10 @@ export default function App() {
       <AppIntroSlider
         renderItem={RenderItem}
         data={slides}
-        onDone={() => setShowRealApp(true)}
+        onDone={async () => {
+          await setSawIntro(true);
+          setHasSeenIntro(true);
+        }}
         dotStyle={styles.dotStyle} // for inactive dots
         activeDotStyle={styles.activeDotStyle} // for the active dot
       />
@@ -108,14 +125,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   introTextStyle: {
-    fontSize: 18,
+    fontSize: 20,
     color: "#ffffff",
     textAlign: "center",
     paddingVertical: 5,
     paddingHorizontal: 15,
   },
   introTitleStyle: {
-    fontSize: 28,
+    fontSize: 25,
     color: "#C0A080", // Accent color
     textAlign: "center",
     marginBottom: 10,
@@ -155,7 +172,7 @@ const slides = [
   {
     key: "s2",
     title: "Filter Locations\nEffortlessly",
-    text: "△ Pizza\n\n≡ Burgers\n\n⨀ Coffee",
+    text: "△ Pizza\n\n≡ Burgers\n\n◎ Coffee",
     lottie: require("./assets/lottie/mapkey.json"),
 
     backgroundColor: "#2C2C2C",

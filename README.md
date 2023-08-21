@@ -28,18 +28,19 @@ TBA
 ### Features / Todo's
 - [x] Branding
 - [x] Splash Screen
+- [x] Bottom Nav Bar (info-map-locations)
 - [x] Landing Screen <=> Map Screen
 - [x] Weather Forecast Overlay
-- [x] Locations Overlay Chip + Pins
-- [x] Bottom Nav Bar (info-map-locations)
+- [x] Locations Overlay Button + Pins
 - [x] Custom Google Map
 - [x] Animated Expanding Locations Button
-- [ ] Sqlite DB for location date
-- [ ] Location list
-- [ ] Location list search bar
+- [x] Establishments Screen (list of all locations)
+- [x] Establishments list search bar 
+- [x] Establishments filter chips
+- [x] Selected Location Birds Eye View
+- [x] Introduction Screen 
 - [ ] QA (Android + iOS)
 - [ ] Publish to App Store
-
 
 ---
 ### How to use
