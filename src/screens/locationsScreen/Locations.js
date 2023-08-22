@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import {
   View,
   Text,
@@ -16,12 +16,14 @@ import { locations } from "../../utils/locations";
 import LocationItem from "./components/LocationItem";
 import SelectedLocation from "../selectedLocationScreen/SelectedLocation";
 
+const LocationItemMemo = React.memo(LocationItem);
+
 const Locations = () => {
-  const [modalVisible, setModalVisible] = useState(false); //if a user clicks on 'map' for an item => show modal
-  const [selectedLocCoords, setSelectedLocCoords] = useState([]); // selected location coordinates
-  const [selectedLocName, setSelectedLocName] = useState(""); // selected location coordinates
-  const [selectedLocRating, setSelectedLocRating] = useState(""); // selected location rating
-  const [selectedLocAddress, setSelectedLocAdress] = useState(""); // selected location address
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedLocCoords, setSelectedLocCoords] = useState([]);
+  const [selectedLocName, setSelectedLocName] = useState("");
+  const [selectedLocRating, setSelectedLocRating] = useState("");
+  const [selectedLocAddress, setSelectedLocAdress] = useState("");
 
   const [searchValue, onChangeText] = useState("");
   const [filters, setFilters] = useState({
@@ -30,43 +32,20 @@ const Locations = () => {
     cafeFilter: true,
   });
 
-  const renderItem = ({ item }) => {
-    //setFilters: returns an array of the filters that are set to true
-    //ex. ["pizzaFilter", "burgersFilter", "cafeFilter"] will be returned on initial render so no filter is on.
-    const setFilters = Object.keys(filters).filter(
-      (key) => filters[key] === true
-    );
+  const setFiltersArray = useMemo(() => {
+    return Object.keys(filters).filter((key) => filters[key] === true);
+  }, [filters]);
 
-    //if the item is part of the filter requested then return the item iff it passes filter
-    if (searchValue == "" && setFilters.includes(item.associatedFilter)) {
-      return (
-        <LocationItem
-          category={item.category}
-          title={item.title}
-          rating={item.rating}
-          hours={item.hours}
-          coords={item.coordinate}
-          address={item.address}
-          serviceOptions={item.serviceOptions}
-          thumbnail={item.thumbnail}
-          setSelectedLocCoords={setSelectedLocCoords}
-          setSelectedLocName={setSelectedLocName}
-          setSelectedLocRating={setSelectedLocRating}
-          setSelectedLocAdress={setSelectedLocAdress}
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-        />
-      );
-    }
-    //if they have the filters on and the value in search box is not empty then continue
-    if (searchValue != "" && setFilters.includes(item.associatedFilter)) {
-      //if the search box value is a substring of the item
+  const renderItem = useCallback(
+    ({ item }) => {
       if (
-        item.title.substring(0, searchValue.length).toLowerCase() ==
-        searchValue.toLowerCase()
+        setFiltersArray.includes(item.associatedFilter) &&
+        (searchValue === "" ||
+          item.title.substring(0, searchValue.length).toLowerCase() ===
+            searchValue.toLowerCase())
       ) {
         return (
-          <LocationItem
+          <LocationItemMemo
             category={item.category}
             title={item.title}
             rating={item.rating}
@@ -84,8 +63,9 @@ const Locations = () => {
           />
         );
       }
-    }
-  };
+    },
+    [searchValue, setFiltersArray, modalVisible]
+  );
 
   return (
     <KeyboardAvoidingView

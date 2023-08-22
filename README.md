@@ -6,19 +6,24 @@ OKSee is a modern and simple cross platform mobile app showcasing the best parts
 
 <h3 align="center">Technologies Used</h3>
 <p align="center">
-<a href="https://reactnative.dev/docs/getting-started?guide=android" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="react"  height="40"/></a><a href="https://www.google.com/maps" target="_blank" rel="noreferrer"> 
-<img src="https://www.vectorlogo.zone/logos/google_maps/google_maps-icon.svg" alt="googlemaps"  height="40"/></a> <a href="https://openweathermap.org/api" target="_blank" rel="noreferrer"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="openweather"  height="40"/></a><a href="https://www.android.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/android/android-icon.svg" alt="android"  height="40"/></a><a href="https://www.apple.com/iphone/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/apple/apple-tile.svg" alt="ios"  height="40"/></a>
+<a href="https://reactnative.dev/docs/getting-started?guide=android" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="react"  height="40"/></a>
+<a href="https://expo.dev/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/expoio/expoio-ar21.svg" alt="react"  height="40"/></a>
+<a href="https://www.google.com/maps" target="_blank" rel="noreferrer"> 
+<img src="https://www.vectorlogo.zone/logos/google_maps/google_maps-icon.svg" alt="googlemaps"  height="40"/></a>
+<a href="https://openweathermap.org/api" target="_blank" rel="noreferrer"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="openweather"  height="40"/></a>
+<a href="https://www.android.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/android/android-icon.svg" alt="android"  height="40"/></a>
 
 </p>
 
 ---
 ### Preview
-TBA
-<!-- <p align="center">
-<img src=".\AppPreview\1.png" alt="" height="500"/>
-<img src=".\AppPreview\2.png" alt="" height="500"/>
-<img src=".\AppPreview\3.png" alt="" height="500"/>
-</p> -->
+ <p align="center">
+<img src=".\AppScreenshots\1.png" alt="" height="500"/>
+<img src=".\AppScreenshots\2.png" alt="" height="500"/>
+<img src=".\AppScreenshots\3.png" alt="" height="500"/>
+<img src=".\AppScreenshots\4.png" alt="" height="500"/>
+<img src=".\AppScreenshots\5.png" alt="" height="500"/>
+</p>
 
 ---
 ### Live Demo
@@ -40,17 +45,20 @@ TBA
 - [x] Selected Location Birds Eye View
 - [x] Introduction Screen 
 - [x] Comment cleanup
-- [] Documentation
-- [ ] QA (Android + iOS)
-- [ ] Publish to App Store
+- [x] Documentation
 
 ---
 ### How to use
-Run in App.js directory:
 
-`npx expo start`
-
-
+1. Include your own Google Maps API key in the `android\app\src\main\AndroidManifest.xml` in below tag
+```
+<meta-data android:name="com.google.android.geo.API_KEY" android:value="<YOUR GOOGLE MAPS API HERE>"/>
+```
+2. Create an API key from [OpenWeatherMap](https://openweathermap.org/api) and store it in a `.env` (put in root dir) as below:
+```
+WEATHER_API_KEY=<YOUR OWM API KEY HERE>
+```
+3. Run `npx expo start` in `./App.js` directory:
 ---
 
 ### Build Info
@@ -61,13 +69,9 @@ Run in App.js directory:
 --- 
 
 ### Possible Issues
+- Not tested on iOS => unset permissions for location, google maps, react native maps, & dotenv
 
 ---
 ### Sources
 
 - [Google Maps Markers + Map Customization](https://youtu.be/xcn-0LyX6JY)
-
-
-### Technical Debt
-- Location Permissions on iOS
-- Google Maps Dependencies/Requirements on iOS
