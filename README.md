@@ -2,7 +2,7 @@
 <img src="./assets/images/logo_land.png" alt="Alternative text" title="App Splash Logo" height="250"/>
 </p>
 
-OKSee is a modern and simple cross platform mobile app showcasing the best parts of Oklahoma City, Oklahoma. The main staple of this mobile app is the modern, sleek, and simple UI/UX. All images, color-schemes, and software engineering was done and maintained by Noah Velasco. This repository will be supported until further notice.
+OKSee is a modern and simple cross platform mobile app showcasing the best parts of Oklahoma City, Oklahoma. The main staple of this mobile app is the modern, sleek, and simple UI/UX. All images, color-schemes, and software engineering was done and maintained by Noah Velasco.
 
 <h3 align="center">Technologies Used</h3>
 <p align="center">
@@ -27,7 +27,11 @@ OKSee is a modern and simple cross platform mobile app showcasing the best parts
 
 ---
 ### Live Demo
-TBA
+<p align =center>
+<a href="https://youtu.be/z8wm_2Pm5aY?si=3Pu1vjBrL39XEKO-" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/youtube/youtube-icon.svg" alt="dart" width="40" height="40"/>
+<h3 align = center><a href = "https://youtu.be/z8wm_2Pm5aY?si=3Pu1vjBrL39XEKO-">Demo Link (Youtube)</a></h3>
+
+</p>
 
 ---
 ### Features / Todo's
