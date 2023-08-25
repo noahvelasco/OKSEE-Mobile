@@ -11,7 +11,6 @@ OKSee is a modern and simple cross platform mobile app showcasing the best parts
 <a href="https://www.google.com/maps" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/google_maps/google_maps-icon.svg" alt="googlemaps"  height="40"/></a>
 <a href="https://openweathermap.org/api" target="_blank" rel="noreferrer"> <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="openweather"  height="40"/></a>
-<a href="https://www.android.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/android/android-icon.svg" alt="android"  height="40"/></a>
 
 </p>
 
